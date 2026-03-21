@@ -19,4 +19,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: develop
           branch: ${{ github.ref_name }}
-          title: "Auto PR: ${{ github.ref_name }}"
+          title: "Auto PR: ${{ github.ref_name }}" 
