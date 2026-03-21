@@ -1,9 +1,10 @@
-name: Auto PR to Main
+name: Auto PR to Develop
 
 on:
   push:
     branches:
-      - develop
+      - 'feature/**'
+      - 'fix/**'
 
 jobs:
   create-pr:
@@ -12,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create PR to main
+      - name: Create PR to develop
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          branch: develop
-          title: "release: develop → main"
+          base: develop
+          branch: ${{ github.ref_name }}
+          title: "Auto PR: ${{ github.ref_name }}"
